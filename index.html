@@ -13,7 +13,7 @@
 <body class="bg-gray-100 p-8">
     <!-- Header -->
     <header class="bg-blue-500 text-white p-4 rounded-lg mb-6 shadow-md">
-        <h1 class="text-2xl font-semibold">Edito</h1>
+        <h1 class="text-2xl font-semibold">Editor de Currículum</h1>
     </header>
 
     <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-8">
@@ -27,7 +27,19 @@
         <div class="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg border border-gray-300">
             <div class="mb-4">
                 <!-- Título alineado a la izquierda -->
-                <h2 class="text-xl font-semibold text-blue-500">Editar Currículum</h2>
+                <div class="flex items-center justify-between mt-0">
+                    <h2 class="text-xl font-semibold text-blue-500">Editar Currículum</h2>
+                    <button id="reload-template"
+                        class="p-2 bg-gray-400 text-white rounded flex items-center justify-center">
+                        <!-- Ícono de lápiz para editar (nuevo ícono) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                        </svg>
+                    </button>
+                </div>
+
 
                 <!-- Contenedor de los controles alineados a la izquierda -->
                 <div class="flex space-x-0 mt-0">
@@ -88,7 +100,6 @@
                             </select>
                         </div>
 
-
                         <!-- Selector de interlineado alineado a la izquierda -->
                         <div class="flex flex-col">
                             <label for="line-height-selector"
@@ -128,7 +139,11 @@
                                 <option value="right">Derecha</option>
                             </select>
                         </div>
-
+                        <div class="flex items-center space-x-2 mt-4">
+                            <input type="checkbox" id="seleccionar-area" class="h-4 w-4 text-blue-500">
+                            <label for="seleccionar-area" class="text-sm text-gray-700">Aplicar solo al área
+                                seleccionada</label>
+                        </div>
                         <div class="flex flex-col">
                             <label for="vigneta-selector" class="block text-sm font-medium text-gray-700">Tipo de
                                 viñeta:</label>
@@ -151,11 +166,6 @@
                                 <option value="30">Sangría de 30px</option>
                                 <option value="40">Sangría de 40px</option>
                             </select>
-                        </div>
-                        <div class="flex items-center space-x-2 mt-4">
-                            <input type="checkbox" id="seleccionar-area" class="h-4 w-4 text-blue-500">
-                            <label for="seleccionar-area" class="text-sm text-gray-700">Aplicar solo al área
-                                seleccionada</label>
                         </div>
                     </div>
                 </div>
@@ -249,6 +259,7 @@
     </div>
 
     <script src="js/scripts.js"></script>
+    <script></script>
 </body>
 
 </html>

@@ -45,6 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
         copiaPlantilla.addEventListener("click", function () {
             mostrarVistaPrevia(plantilla);
             mostrarFormulario(plantilla);
+            // Hacer scroll hasta el área de vista previa
+            const previewContent = document.getElementById("preview-content");
+            previewContent.scrollIntoView({
+                behavior: "smooth", // Esto hace que el desplazamiento sea suave
+                block: "start"      // Esto asegura que el elemento se alinee al inicio de la vista
+            });
         });
     });
 });
@@ -83,6 +89,8 @@ document.getElementById('submit-form').addEventListener('click', function () {
     }
 });
 
+let currentTemplateHTML = ''; // Variable para almacenar la plantilla seleccionada
+
 // Función para mostrar la vista previa de la plantilla seleccionada
 function mostrarVistaPrevia(plantilla) {
     const previewContent = document.getElementById("preview-content");
@@ -107,6 +115,8 @@ function mostrarVistaPrevia(plantilla) {
 
     // Añadir la plantilla copiada al contenedor
     previewContent.appendChild(contenidoCopia);
+    // Guardar el contenido de la plantilla para recargarla después
+    currentTemplateHTML = contenidoCopia.outerHTML;
 
     // Alineación usando Flexbox
     previewContent.style.display = 'flex';
@@ -115,6 +125,19 @@ function mostrarVistaPrevia(plantilla) {
     previewContent.style.border = 'none';  // Eliminar borde de la vista previa
     previewContent.style.boxShadow = 'none';  // Eliminar sombra de la vista previ
 }
+
+// Función para recargar la plantilla
+function recargarPlantilla() {
+    const previewContent = document.getElementById("preview-content");
+
+    if (currentTemplateHTML) {
+        // Recargar la plantilla guardada
+        previewContent.innerHTML = currentTemplateHTML;
+    }
+}
+
+// Evento del botón "Recargar Plantilla"
+document.getElementById('reload-template').addEventListener('click', recargarPlantilla);
 
 
 // Función para mostrar el formulario correspondiente en la vista previa
@@ -176,7 +199,10 @@ function actualizarVistaPrevia() {
         document.addEventListener("mouseup", function () {
             const selection = window.getSelection();
             const selectedText = selection.toString(); // Obtener el texto seleccionado
-
+            if (!applyToSelectedAreaCheckbox.checked) {
+                // Si el checkbox no está marcado, no aplicar estilos
+                return;
+            }
             // Comprobar si hay una selección de texto
             if (selectedText) {
                 // Obtener el contenedor del texto seleccionado
@@ -185,16 +211,18 @@ function actualizarVistaPrevia() {
 
                 // Asegurarnos de que la selección esté dentro de #preview-content
                 selectedElements.forEach(element => {
-                    // Aplicar los estilos a cada nodo de texto seleccionado
-                    element.parentNode.style.fontFamily = selectedFont;
-                    element.parentNode.style.fontSize = selectedFontSize;
-                    element.parentNode.style.lineHeight = lineHeight;
-                    element.parentNode.style.letterSpacing = letterSpacing;
-                    element.parentNode.style.textAlign = selectedAlign; // Aplicar la alineación
-                    element.parentElement.style.listStyleType = selectedVigneta;
-                    element.parentElement.style.paddingLeft = selectedIndent; // Cambiar la sangría
-                    element.parentElement.style.listStylePosition = 'inside'; // Centrar las viñetas
-
+                    const parent = element.parentNode;
+                    if (parent.closest('#preview-content')) { // Limitar a los elementos dentro de previewContent
+                        // Aplicar los estilos a cada nodo de texto seleccionado
+                        parent.style.fontFamily = selectedFont;
+                        parent.style.fontSize = selectedFontSize;
+                        parent.style.lineHeight = lineHeight;
+                        parent.style.letterSpacing = letterSpacing;
+                        parent.style.textAlign = selectedAlign; // Aplicar la alineación
+                        parent.style.listStyleType = selectedVigneta;
+                        parent.style.paddingLeft = selectedIndent; // Cambiar la sangría
+                        parent.style.listStylePosition = 'inside'; // Centrar las viñetas
+                    }
                 });
             }
         });
@@ -207,7 +235,6 @@ function actualizarVistaPrevia() {
             elemento.style.lineHeight = lineHeight;
             elemento.style.letterSpacing = letterSpacing;
             elemento.style.textAlign = selectedAlign; // Aplicar la alineación a todo el contenido
-            elemento.style.paddingLeft = selectedIndent; // Cambiar la sangría
             elemento.style.listStylePosition = 'inside'; // Centrar las viñetas
         });
     }
@@ -242,3 +269,20 @@ letterSpacingSelector.addEventListener("input", actualizarVistaPrevia);
 textAlignSelector.addEventListener("change", actualizarVistaPrevia); // Escuchar cambios en la alineación
 vignetaSelector.addEventListener("change", actualizarVistaPrevia); // Escuchar cambios en la alineación
 indentSelector.addEventListener("change", actualizarVistaPrevia);
+
+// Función para actualizar la visibilidad de los selectores
+function toggleSelectors() {
+    if (applyToSelectedAreaCheckbox.checked) {
+        indentSelector.closest(".flex").style.display = "block"; // Muestra el selector de sangría
+        vignetaSelector.closest(".flex").style.display = "block"; // Muestra el selector de viñeta
+    } else {
+        indentSelector.closest(".flex").style.display = "none"; // Oculta el selector de sangría
+        vignetaSelector.closest(".flex").style.display = "none"; // Oculta el selector de viñeta
+    }
+}
+
+// Inicializa la visibilidad según el estado del checkbox
+toggleSelectors();
+
+// Escucha los cambios del checkbox
+applyToSelectedAreaCheckbox.addEventListener("change", toggleSelectors);
