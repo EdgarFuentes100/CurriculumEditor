@@ -68,9 +68,26 @@
                         <div class="flex flex-col">
                             <label for="font-size-selector"
                                 class="block text-sm font-medium text-gray-700">Tamaño:</label>
-                            <input id="font-size-selector" type="number" min="8" max="36" value="16"
+                            <select id="font-size-selector"
                                 class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                                <option value="12">12</option>
+                                <option value="14">14</option>
+                                <option value="16" selected>16</option>
+                                <option value="18">18</option>
+                                <option value="20">20</option>
+                                <option value="22">22</option>
+                                <option value="24">24</option>
+                                <option value="26">26</option>
+                                <option value="28">28</option>
+                                <option value="30">30</option>
+                                <option value="32">32</option>
+                                <option value="34">34</option>
+                                <option value="36">36</option>
+                            </select>
                         </div>
+
 
                         <!-- Selector de interlineado alineado a la izquierda -->
                         <div class="flex flex-col">
@@ -90,11 +107,57 @@
                         <div class="flex flex-col">
                             <label for="letter-spacing-selector"
                                 class="block text-sm font-medium text-gray-700">Espaciado entre letras:</label>
-                            <input id="letter-spacing-selector" type="number" min="0" max="5" value="0"
+                            <select id="letter-spacing-selector"
                                 class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <!-- Selector de alineación de texto -->
+                        <div class="flex flex-col">
+                            <label for="text-align-selector"
+                                class="block text-sm font-medium text-gray-700">Alineación:</label>
+                            <select id="text-align-selector"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="left">Izquierda</option>
+                                <option value="center">Centro</option>
+                                <option value="right">Derecha</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <label for="vigneta-selector" class="block text-sm font-medium text-gray-700">Tipo de
+                                viñeta:</label>
+                            <select id="vigneta-selector"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="none">Sin viñeta</option>
+                                <option value="disc">Viñeta (Punto)</option>
+                                <option value="circle">Viñeta (Círculo)</option>
+                                <option value="square">Viñeta (Cuadrado)</option>
+                                <option value="upper-roman">Viñeta (Romanos Mayúsculos)</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="indent-selector"
+                                class="block text-sm font-medium text-gray-700">Sangría:</label>
+                            <select id="indent-selector"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="0">Sin Sangría</option>
+                                <option value="20">Sangría de 20px</option>
+                                <option value="30">Sangría de 30px</option>
+                                <option value="40">Sangría de 40px</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-4">
+                            <input type="checkbox" id="seleccionar-area" class="h-4 w-4 text-blue-500">
+                            <label for="seleccionar-area" class="text-sm text-gray-700">Aplicar solo al área
+                                seleccionada</label>
                         </div>
                     </div>
-
                 </div>
             </div>
 
