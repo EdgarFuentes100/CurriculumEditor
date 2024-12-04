@@ -1,0 +1,49 @@
+ /* Aseguramos que el div de vista previa ocupe todo el espacio disponible */
+ #preview-content {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 750px;
+     max-width: 750px;
+     height: 100%;
+     width: 100%;
+     overflow: auto;
+     border: 2px dashed #ccc;
+     /* Para identificar el área de vista previa */
+ }
+
+ .plantilla {
+     display: none;
+ }
+
+ .form-template {
+     font-family: Arial, sans-serif;
+     margin-top: 20px;
+     max-width: 400px;
+     margin: 0 auto;
+     display: none;
+ }
+
+ /* Estilos para cada grupo de elementos (etiqueta + input) */
+ .form-group {
+     margin-bottom: 15px;
+ }
+
+ /* Etiquetas encima de los inputs */
+ .form-group label {
+     display: block;
+     font-size: 14px;
+     font-weight: bold;
+     margin-bottom: 5px;
+     color: #333;
+ }
+
+ /* Estilos de los campos de entrada (input) */
+ .form-group input {
+     width: 100%;
+     padding: 8px;
+     font-size: 16px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-sizing: border-box;
+ }
