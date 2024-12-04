@@ -25,14 +25,85 @@
 
         <!-- Formulario de edición (derecha) -->
         <div class="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg border border-gray-300">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-4">Editar Currículum</h2>
+            <div class="mb-4">
+                <!-- Título alineado a la izquierda -->
+                <h2 class="text-xl font-semibold text-blue-500">Editar Currículum</h2>
+
+                <!-- Contenedor de los controles alineados a la izquierda -->
+                <div class="flex space-x-0 mt-0">
+                    <!-- Selector de fuente alineado a la izquierda -->
+                    <!-- Contenedor de los controles alineados a la izquierda -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+                        <!-- Selector de fuente alineado a la izquierda -->
+                        <div class="flex flex-col">
+                            <label for="font-selector" class="block text-sm font-medium text-gray-700">Fuente:</label>
+                            <select id="font-selector"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="Arial, sans-serif">Arial</option>
+                                <option value="'Times New Roman', serif">Times New Roman</option>
+                                <option value="'Courier New', monospace">Courier New</option>
+                                <option value="'Roboto', sans-serif">Roboto</option>
+                                <option value="'Open Sans', sans-serif">Open Sans</option>
+                                <option value="'Lato', sans-serif">Lato</option>
+                                <option value="'Montserrat', sans-serif">Montserrat</option>
+                                <option value="'Verdana', sans-serif">Verdana</option>
+                                <option value="'Tahoma', sans-serif">Tahoma</option>
+                                <option value="'Georgia', serif">Georgia</option>
+                                <option value="'Times', serif">Times</option>
+                                <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                                <option value="'Merriweather', serif">Merriweather</option>
+                                <option value="'Poppins', sans-serif">Poppins</option>
+                                <option value="'Ubuntu', sans-serif">Ubuntu</option>
+                                <option value="'Fira Sans', sans-serif">Fira Sans</option>
+                                <option value="'Raleway', sans-serif">Raleway</option>
+                                <option value="'Playfair Display', serif">Playfair Display</option>
+                                <option value="'Droid Sans', sans-serif">Droid Sans</option>
+                                <option value="'PT Sans', sans-serif">PT Sans</option>
+                                <option value="'Source Sans Pro', sans-serif">Source Sans Pro</option>
+                                <option value="'Cairo', sans-serif">Cairo</option>
+                            </select>
+                        </div>
+
+                        <!-- Selector de tamaño de fuente alineado a la izquierda -->
+                        <div class="flex flex-col">
+                            <label for="font-size-selector"
+                                class="block text-sm font-medium text-gray-700">Tamaño:</label>
+                            <input id="font-size-selector" type="number" min="8" max="36" value="16"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                        </div>
+
+                        <!-- Selector de interlineado alineado a la izquierda -->
+                        <div class="flex flex-col">
+                            <label for="line-height-selector"
+                                class="block text-sm font-medium text-gray-700">Interlineado:</label>
+                            <select id="line-height-selector"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                                <option value="1.0">1.0</option>
+                                <option value="1.25">1.25</option>
+                                <option value="1.5">1.5</option>
+                                <option value="1.75">1.75</option>
+                                <option value="2.0">2.0</option>
+                            </select>
+                        </div>
+
+                        <!-- Selector de espaciado entre letras -->
+                        <div class="flex flex-col">
+                            <label for="letter-spacing-selector"
+                                class="block text-sm font-medium text-gray-700">Espaciado entre letras:</label>
+                            <input id="letter-spacing-selector" type="number" min="0" max="5" value="0"
+                                class="w-full p-1 text-sm border border-gray-300 rounded mt-1 cursor-pointer">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
             <!-- Formulario dinámico que ocupa todo el espacio disponible -->
             <div id="preview-form" class="w-full bg-white p-6 rounded-lg shadow-lg border border-gray-300 mb-6">
                 <!-- Aquí irá el formulario dinámico -->
             </div>
 
-            <!-- Botones que ocupan el 100% de ancho, con alto automático y centrados -->
+            <!-- Botones de acción -->
             <div class="flex flex-col justify-center w-full space-y-4">
                 <button id="submit-form" class="w-full p-2 bg-green-500 text-white rounded">Enviar</button>
                 <button id="generate-pdf" class="w-full p-2 bg-blue-500 text-white rounded">Generar PDF</button>

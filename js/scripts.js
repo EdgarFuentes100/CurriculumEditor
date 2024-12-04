@@ -145,3 +145,35 @@ function mostrarFormulario(plantilla) {
         });
     }
 }
+
+// Obtener los controles del formulario
+const fontSelector = document.getElementById("font-selector");
+const fontSizeSelector = document.getElementById("font-size-selector");
+const lineHeightSelector = document.getElementById("line-height-selector");
+const letterSpacingSelector = document.getElementById("letter-spacing-selector");
+
+// Función para actualizar la vista previa
+function actualizarVistaPrevia() {
+    const previewContent = document.getElementById("preview-content");
+
+    // Obtener los valores seleccionados
+    const selectedFont = fontSelector.value;
+    const selectedFontSize = fontSizeSelector.value + "px";
+    const lineHeight = lineHeightSelector.value;
+    const letterSpacing = letterSpacingSelector.value + "px";
+
+    // Aplicar los estilos a todos los elementos de texto en la vista previa
+    const textoElementos = previewContent.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, li');
+    textoElementos.forEach((elemento) => {
+        elemento.style.fontFamily = selectedFont;  // Cambia la fuente
+        elemento.style.fontSize = selectedFontSize;  // Cambia el tamaño de la fuente
+        elemento.style.lineHeight = lineHeight;  // Cambia el interlineado
+        elemento.style.letterSpacing = letterSpacing;  // Cambia el espaciado entre letras
+    });
+}
+
+// Añadir event listeners para actualizar la vista previa en tiempo real
+fontSelector.addEventListener("change", actualizarVistaPrevia);
+fontSizeSelector.addEventListener("input", actualizarVistaPrevia);
+lineHeightSelector.addEventListener("change", actualizarVistaPrevia);
+letterSpacingSelector.addEventListener("input", actualizarVistaPrevia);
